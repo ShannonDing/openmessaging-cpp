@@ -1,5 +1,5 @@
-#ifndef OMS_LOCAL_TRANSACTION_EXECUTOR_H
-#define OMS_LOCAL_TRANSACTION_EXECUTOR_H
+#ifndef OMS_TRANSACTION_CHECK_LISTENER_H
+#define OMS_TRANSACTION_CHECK_LISTENER_H
 
 #include "Namespace.h"
 #include "Message.h"
@@ -24,20 +24,18 @@ BEGIN_NAMESPACE_3(io, openmessaging, producer)
      * @version OMS 1.0
      * @since OMS 1.0
      */
-    class LocalTransactionExecutor : private Uncopyable {
+    class TransactionStateCheckListener : private Uncopyable {
     public:
-        virtual ~LocalTransactionExecutor() {
+        virtual ~TransactionStateCheckListener() {
 
         }
 
-        virtual void execute(const MessagePtr &message, const ExecutionContextPtr &context) = 0;
-
-        virtual void check(const MessagePtr &message, const CheckContextPtr &context) = 0;
+        virtual void check(const MessagePtr &message, const CheckContextPtr &checkContext) = 0;
 
     };
 
-    typedef NS::shared_ptr<LocalTransactionExecutor> LocalTransactionExecutorPtr;
+    typedef NS::shared_ptr<TransactionStateCheckListener> TransactionStateCheckListenerPtr;
 
 END_NAMESPACE_3(io, openmessaging, producer)
 
-#endif //OMS_LOCAL_TRANSACTION_EXECUTOR_H
+#endif //OMS_TRANSACTION_CHECK_LISTENER_H

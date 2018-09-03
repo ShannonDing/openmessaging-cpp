@@ -3,6 +3,6 @@
 
 #include "OMS.h"
 #include "MessagingAccessPoint.h"
-#include "BuiltinKeys.h"
+#include "OMSBuiltinKeys.h"
 
 #endif //OMS_OPEN_MESSAGING_H

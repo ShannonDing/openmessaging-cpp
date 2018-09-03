@@ -16,6 +16,8 @@ BEGIN_NAMESPACE_3(io, openmessaging, producer)
 
         virtual void rollback() = 0;
 
+        virtual void unknown() = 0;
+
     };
 
     typedef NS::shared_ptr<CheckContext> CheckContextPtr;

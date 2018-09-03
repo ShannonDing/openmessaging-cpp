@@ -5,7 +5,7 @@
 
 #include "smart_pointer.h"
 #include "KeyValue.h"
-#include "BuiltinKeys.h"
+#include "OMSBuiltinKeys.h"
 #include "Namespace.h"
 #include "Uncopyable.h"
 
@@ -40,26 +40,8 @@ BEGIN_NAMESPACE_2(io, openmessaging)
 
         }
 
-        virtual KeyValuePtr sysHeaders() = 0;
-
-        virtual KeyValuePtr userHeaders() = 0;
-
-        virtual Message& putSysHeaders(const std::string &key, int value) = 0;
-
-        virtual Message& putSysHeaders(const std::string &key, long value) = 0;
-
-        virtual Message& putSysHeaders(const std::string &key, double value) = 0;
-
-        virtual Message& putSysHeaders(const std::string &key, const std::string &value) = 0;
-
-        virtual Message& putUserHeaders(const std::string &key, int value) = 0;
-
-        virtual Message& putUserHeaders(const std::string &key, long value) = 0;
-
-        virtual Message& putUserHeaders(const std::string &key, double value) = 0;
-
-        virtual Message& putUserHeaders(const std::string &key, const std::string &value) = 0;
-
+        virtual KeyValuePtr properties() = 0;
+        virtual HeadersPtr headers() = 0;
     };
 
     typedef NS::shared_ptr<Message> MessagePtr;

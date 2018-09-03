@@ -12,8 +12,6 @@ BEGIN_NAMESPACE_3(io, openmessaging, consumer)
             virtual ~Context() {
             }
 
-            virtual KeyValuePtr attributes() = 0;
-
             virtual void ack() = 0;
         };
 

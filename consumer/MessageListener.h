@@ -22,7 +22,7 @@ BEGIN_NAMESPACE_3(io, openmessaging, consumer)
 
         }
 
-        virtual void onMessage(MessagePtr &message, ContextPtr &context) = 0;
+        virtual void onReceived(MessagePtr &message, ContextPtr &context) = 0;
     };
 
     typedef NS::shared_ptr<MessageListener> MessageListenerPtr;

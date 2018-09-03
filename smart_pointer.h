@@ -70,7 +70,7 @@ BEGIN_NAMESPACE_2(io, openmessaging)
         bool copy_;
     };
 
-typedef ManagedArray<signed char> MessageBody;
+typedef ManagedArray<unsigned char> MessageBody;
 
 END_NAMESPACE_2(io, openmessaging)
 

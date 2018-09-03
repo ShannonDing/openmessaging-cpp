@@ -8,8 +8,7 @@
 #include "producer/Producer.h"
 #include "consumer/PullConsumer.h"
 #include "consumer/PushConsumer.h"
-#include "consumer/StreamingConsumer.h"
-#include "ResourceManager.h"
+#include "manager/ResourceManager.h"
 #include "observer/Observer.h"
 #include "Namespace.h"
 
@@ -45,7 +44,7 @@ BEGIN_NAMESPACE_2(io, openmessaging)
         * @return the OMS version of implementation
         * @see OMS#specVersion
         */
-        virtual std::string implVersion() = 0;
+        virtual std::string version() = 0;
 
         /**
          * Returns the attributes of this {@code MessagingAccessPoint} instance.
@@ -71,7 +70,8 @@ BEGIN_NAMESPACE_2(io, openmessaging)
          * @throws OMSRuntimeException if the {@code MessagingAccessPoint} fails to handle this request
          * due to some internal error
          */
-        virtual producer::ProducerPtr createProducer(const KeyValuePtr &properties = kv_nullptr) = 0;
+        virtual producer::ProducerPtr createProducer() = 0;
+        virtual producer::ProducerPtr createProducer(const TransactionStateCheckListenerPtr &transactionStateCheckListener) = 0;
 
         /**
          * Creates a new {@code PushConsumer} for the specified {@code MessagingAccessPoint}.
@@ -82,25 +82,7 @@ BEGIN_NAMESPACE_2(io, openmessaging)
          * @throws OMSRuntimeException if the {@code MessagingAccessPoint} fails to handle this request
          * due to some internal error
          */
-        virtual consumer::PushConsumerPtr createPushConsumer(const KeyValuePtr &properties = kv_nullptr) = 0;
-
-        /**
-         * Creates a new {@code PullConsumer} for the specified {@code MessagingAccessPoint}.
-         *
-         * @return the created {@code PullConsumer}
-         * @throws OMSRuntimeException if the {@code MessagingAccessPoint} fails to handle this request
-         * due to some internal error
-         */
-        virtual consumer::PullConsumerPtr createPullConsumer(const KeyValuePtr &properties = kv_nullptr) = 0;
-
-        /**
-         * Creates a new {@code StreamingConsumer} for the specified {@code MessagingAccessPoint}.
-         *
-         * @return the created {@code Stream}
-         * @throws OMSRuntimeException if the {@code MessagingAccessPoint} fails to handle this request
-         * due to some internal error
-         */
-        virtual consumer::StreamingConsumerPtr createStreamingConsumer(const KeyValuePtr &properties = kv_nullptr) = 0;
+        virtual consumer::PushConsumerPtr createConsumer() = 0;
 
         /**
          * Gets a lightweight {@code ResourceManager} instance from the specified {@code MessagingAccessPoint}.

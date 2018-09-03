@@ -22,9 +22,9 @@ BEGIN_NAMESPACE_3(io, openmessaging, interceptor)
 
         virtual std::string name() const = 0;
 
-        virtual void preSend(const MessagePtr &message, const KeyValuePtr &attributes = kv_nullptr) = 0;
+        virtual void preSend(const MessagePtr &message, const InterceptorContextPtr &context = kv_nullptr) = 0;
 
-        virtual void postSend(const MessagePtr &message, const KeyValuePtr &attributes = kv_nullptr) = 0;
+        virtual void postSend(const MessagePtr &message, const InterceptorContextPtr &context = kv_nullptr) = 0;
 
     };
     typedef NS::shared_ptr<ProducerInterceptor> ProducerInterceptorPtr;

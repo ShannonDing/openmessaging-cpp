@@ -33,6 +33,8 @@ BEGIN_NAMESPACE_2(io, openmessaging)
 
         }
 
+        virtual KeyValue &put(const std::string &key, short value) = 0;
+
         virtual KeyValue &put(const std::string &key, int value) = 0;
 
         virtual KeyValue &put(const std::string &key, long value) = 0;
@@ -40,6 +42,8 @@ BEGIN_NAMESPACE_2(io, openmessaging)
         virtual KeyValue &put(const std::string &key, double value) = 0;
 
         virtual KeyValue &put(const std::string &key, const std::string &value) = 0;
+
+        virtual short getShort(const std::string &key, short defaultValue = 0) = 0;
 
         virtual int getInt(const std::string &key, int defaultValue = 0) = 0;
 
