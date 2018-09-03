@@ -46,34 +46,13 @@ BEGIN_NAMESPACE_3(io, openmessaging, producer)
 
         /**
          * Sends a message to the specified destination synchronously, the destination should be preset to
-         * {@link Message#sysHeaders()}, other header fields as well.
+         * {@link Message#Headers()}, other header fields as well.
          *
          * @param message a message will be sent
          * @return the successful {@code SendResult}
-         * @throws OMSMessageFormatException if an invalid message is specified.
-         * @throws OMSTimeOutException if the given timeout elapses before the send operation completes
-         * @throws OMSRuntimeException if the {@code Producer} fails to send the message due to some internal error.
          */
         virtual SendResultPtr send(const MessagePtr &message) = 0;
 
-        /**
-         * Sends a transactional message to the specified destination synchronously, using the specified attributes,
-         * the destination should be preset to {@link Message#sysHeaders()}, other header fields as well.
-         * <p>
-         * A transactional message will be exposed to consumer if and only if the local transaction
-         * branch has been committed, or be discarded if local transaction has been rolled back.
-         *
-         * @param message a transactional message will be sent
-         * @param branchExecutor local transaction executor associated with the message
-         * @param attributes the specified attributes
-         * @return the successful {@code SendResult}
-         * @throws OMSMessageFormatException if an invalid message is specified.
-         * @throws OMSTimeOutException if the given timeout elapses before the send operation completes
-         * @throws OMSRuntimeException if the {@code Producer} fails to send the message due to some internal error.
-         */
-        /*virtual SendResultPtr send(const MessagePtr &message,
-                                   const LocalTransactionExecutorPtr &executor,
-                                   const KeyValuePtr &properties) = 0;*/
 
         /**
          * Asynchronously send a message to its destination, which is specified in system headers.

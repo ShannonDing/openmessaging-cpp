@@ -22,6 +22,14 @@ BEGIN_NAMESPACE_3(io, openmessaging, consumer)
 
         }
 
+        /**
+         * Callback method to receive incoming messages.
+         * <p>
+         * A message listener should handle different types of {@code Message}.
+         *
+         * @param message the received message object.
+         * @param context the context delivered to the consume thread.
+         */
         virtual void onReceived(MessagePtr &message, ContextPtr &context) = 0;
     };
 

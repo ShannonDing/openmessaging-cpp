@@ -11,7 +11,11 @@ BEGIN_NAMESPACE_3(io, openmessaging, interceptor)
         public:
             virtual ~InterceptorContext() {
             }
-
+            /**
+             * Returns the attributes of this {@code InterceptorContext} instance.
+             *
+             * @return the attributes.
+             */
             virtual KeyValuePtr attributes() = 0;
 
         };

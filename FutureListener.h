@@ -15,6 +15,10 @@ BEGIN_NAMESPACE_2(io, openmessaging)
 
         }
 
+        /**
+         * Invoked when the operation completes, be the associated {@link Promise} successful or not.
+         * @param future The associated promise facade
+         */
         virtual void operationComplete(const Future& future) = 0;
     };
 

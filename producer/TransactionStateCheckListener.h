@@ -29,7 +29,12 @@ BEGIN_NAMESPACE_3(io, openmessaging, producer)
         virtual ~TransactionStateCheckListener() {
 
         }
-
+        /**
+         * Checks the status of the local transaction branch.
+         *
+         * @param message the associated message.
+         * @param checkContext the check context.
+         */
         virtual void check(const MessagePtr &message, const CheckContextPtr &checkContext) = 0;
 
     };

@@ -22,8 +22,22 @@ BEGIN_NAMESPACE_3(io, openmessaging, interceptor)
 
         virtual std::string name() const = 0;
 
+        /**
+         * Invoked before the message is actually sent to the network.
+         * <p>
+         * This allows for modification of the message if necessary.
+         *
+         * @param message a message will be sent.
+         * @param attributes the extensible attributes delivered to the intercept thread.
+         */
         virtual void preSend(const MessagePtr &message, const InterceptorContextPtr &context = kv_nullptr) = 0;
 
+        /**
+         * Invoked immediately after the successful send invocation.
+         *
+         * @param message the message is actually sent.
+         * @param attributes the extensible attributes delivered to the intercept thread.
+         */
         virtual void postSend(const MessagePtr &message, const InterceptorContextPtr &context = kv_nullptr) = 0;
 
     };

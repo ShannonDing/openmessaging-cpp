@@ -12,6 +12,11 @@ BEGIN_NAMESPACE_3(io, openmessaging, consumer)
             virtual ~Context() {
             }
 
+            /**
+             * Acknowledges the specified and consumed message, which is related to this {@code Context}.
+             * <p>
+             * Messages that have been received but not acknowledged may be redelivered.
+             */
             virtual void ack() = 0;
         };
 

@@ -9,7 +9,7 @@
 BEGIN_NAMESPACE_3(io, openmessaging, interceptor)
 
     /**
-     * A {@code PushConsumerInterceptor} is used to intercept consume operations of push consumer.
+     * A {@code ConsumerInterceptor} is used to intercept consume operations of consumer.
      *
      * @version OMS 1.0
      * @since OMS 1.0
@@ -21,10 +21,21 @@ BEGIN_NAMESPACE_3(io, openmessaging, interceptor)
         }
 
         virtual std::string name() const = 0;
+        /**
+         * Invoked before the invocation of {@link MessageListener#onReceived(Message, Context)}.
+         *
+         * @param message the message is actually received.
+         * @param attributes the extensible attributes delivered to the intercept thread.
+         */
+        virtual void preReceive(const MessagePtr &message, const InterceptorContextPtr &attributes = kv_nullptr) = 0;
 
-        virtual void preReceive(const MessagePtr &message, const InterceptorContextPtr &context = kv_nullptr) = 0;
-
-        virtual void postReceive(const MessagePtr &message, const InterceptorContextPtr &context = kv_nullptr) = 0;
+        /**
+         * Invoked after the invocation of {@link MessageListener#onReceived(Message, MessageListener.Context)}.
+         *
+         * @param message the message is actually received.
+         * @param attributes the extensible attributes delivered to the intercept thread.
+         */
+        virtual void postReceive(const MessagePtr &message, const InterceptorContextPtr &attributes = kv_nullptr) = 0;
     };
 
     typedef NS::shared_ptr<ConsumerInterceptor> ConsumerInterceptorPtr;

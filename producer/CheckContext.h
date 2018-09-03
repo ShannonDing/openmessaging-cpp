@@ -11,11 +11,17 @@ BEGIN_NAMESPACE_3(io, openmessaging, producer)
         virtual ~CheckContext() {
 
         }
-
+        /**
+         * Commits a transaction.
+         */
         virtual void commit() = 0;
-
+        /**
+         * Rolls back a transaction.
+         */
         virtual void rollback() = 0;
-
+        /**
+         * Unknown transaction status, may be this transaction still on going.
+         */
         virtual void unknown() = 0;
 
     };

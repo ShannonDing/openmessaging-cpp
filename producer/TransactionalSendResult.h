@@ -22,10 +22,21 @@ BEGIN_NAMESPACE_3(io, openmessaging, producer)
 
         }
 
+        /**
+         * The unique transactionId id related to the {@code TransactionResult} instance.
+         *
+         * @return the transactional id
+         */
         virtual std::string transactionId() = 0;
 
+        /**
+         * Commits a transaction.
+         */
         virtual void commit() = 0;
 
+        /**
+         * Rolls back a transaction.
+         */
         virtual void rollback() = 0;
     };
 

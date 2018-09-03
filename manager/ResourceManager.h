@@ -39,8 +39,7 @@ BEGIN_NAMESPACE_3(io, openmessaging, manager)
         /**
          * Creates a {@code Namespace} resource with some preset attributes.
          *
-         * @param nsName the name of the new namespace
-         * @param attributes the preset attributes
+         * @param ns the name of the new namespace
          */
         virtual void createNamespace(const std::string &ns) = 0;
 
@@ -48,7 +47,6 @@ BEGIN_NAMESPACE_3(io, openmessaging, manager)
          * Deletes an existing namespace resource.
          *
          * @param ns the namespace to delete
-         * @throws OMSResourceNotExistException if the specified namespace does not exist
          */
         virtual void deleteNamespace(const std::string &ns) = 0;
 
@@ -64,7 +62,6 @@ BEGIN_NAMESPACE_3(io, openmessaging, manager)
          * the new namespace after the method returns successfully.
          *
          * @param ns the target namespace to switch to
-         * @throws OMSResourceNotExistException if the new namespace does not exist
          */
         virtual void switchNamespace(const std::string &ns) = 0;
 
@@ -73,7 +70,6 @@ BEGIN_NAMESPACE_3(io, openmessaging, manager)
          *
          * @param queueName the name of the new queue
          * @param attributes the preset attributes
-         * @throws OMSResourceNotExistException if the specified queue name is duplicated
          */
         virtual void createQueue(const std::string &ns, const std::string &queue, KeyValuePtr attributes) = 0;
 
@@ -81,7 +77,6 @@ BEGIN_NAMESPACE_3(io, openmessaging, manager)
          * Deletes an existing queue resource.
          *
          * @param queueName the queue needs to be deleted
-         * @throws OMSResourceNotExistException if the specified queue or namespace does not exist
          */
         virtual void deleteQueue(const std::string &queue) = 0;
 
@@ -92,10 +87,21 @@ BEGIN_NAMESPACE_3(io, openmessaging, manager)
          */
         virtual std::vector<std::string> listQueues() = 0;
 
-
+        /**
+         * Routing from sourceQueue to targetQueue. Both queues are could be received messages after creating route action.
+         *
+         * @param sourceQueue source queue, process messages received from producer and duplicate those to target queue.
+         * @param targetQueue receive messages from source queue.
+         */
         virtual void routing(const std::string &sourceQueue, const std::string &targetQueue) = 0;
 
-
+        /**
+         * In order to enable consumers to get the message in the specified mode, the filter rule follows the sql standard
+         * to filter out messages.
+         *
+         * @param queueName queue name.
+         * @param filterString SQL expression to filter out messages.
+         */
         virtual void filter(const std::string &queue, const std::string &filter) = 0;
 
 
