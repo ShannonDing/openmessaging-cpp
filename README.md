@@ -4,5 +4,6 @@
 
 C++ APIs are designed to be consistent with [Java APIs](https://openmessaging.github.io/openmessaging-java/) in terms of semantics.
 
+Version: See [Java APIs](https://openmessaging.github.io/openmessaging-java/).
 
 ## ![Powered by Linux Foundation](http://openmessaging.cloud/images/linux-foundation-logo.png)
